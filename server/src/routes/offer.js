@@ -1,6 +1,6 @@
 const express = require("express");
 const { calculateOffer } = require("../services/pricing");
-const { enrichWithAI, estimateDistanceWithAI } = require("../services/ai");
+const { generateOfferWithAI, fallbackEnrich } = require("../services/ai");
 
 const router = express.Router();
 
@@ -49,17 +49,20 @@ router.post("/generate-offer", async (req, res) => {
       heavyItems: parseInt(heavyItems) || 0,
     };
 
-    // Try AI distance estimation first, fall back to local calculation
-    const aiDistance = await estimateDistanceWithAI(offerInput.addressFrom, offerInput.addressTo);
-    if (aiDistance) {
-      offerInput.distanceOverride = aiDistance.km;
+    // Calculate offer with local distance first
+    let offer = calculateOffer(offerInput);
+
+    // Single AI call for distance + enrichment
+    const aiResult = await generateOfferWithAI(offerInput, offer);
+
+    // If AI returned a better distance, recalculate pricing with it
+    if (aiResult && aiResult.distanceKm) {
+      offerInput.distanceOverride = aiResult.distanceKm;
+      offer = calculateOffer(offerInput);
     }
 
-    // Calculate offer
-    const offer = calculateOffer(offerInput);
-
-    // Enrich with AI
-    const enriched = await enrichWithAI(offerInput, offer);
+    // Use AI enrichment or fallback
+    const enriched = aiResult || fallbackEnrich(offerInput, offer);
 
     // Build response
     const response = {
