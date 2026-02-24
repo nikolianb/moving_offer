@@ -4,7 +4,6 @@ const BASE_RATES = {
   perKm: 2.50,          // transport cost per km
   transportBase: 80,    // base transport fee (loading/unloading)
   assembly: 45,         // furniture assembly per room
-  cleaning: 60,         // final cleaning per room
   noLiftPerFloor: 30,   // surcharge per floor when no lift available
 };
 
@@ -111,17 +110,6 @@ function calculateOffer({ rooms, addressFrom, addressTo, hasLift, floor = 0, inc
     });
     totalPrice += assemblyCost;
   }
-
-  // Task: Final Cleaning
-  const cleaningCost = Math.round(roomCount * BASE_RATES.cleaning);
-  tasks.push({
-    id: taskId++,
-    name: "Final Cleaning",
-    description: "Basic cleaning of the old apartment after move-out",
-    price: cleaningCost,
-    priceExplanation: `${roomCount} rooms × CHF ${BASE_RATES.cleaning}/room`,
-  });
-  totalPrice += cleaningCost;
 
   // Surcharge: No Lift
   if (!hasLift && floor > 0) {
