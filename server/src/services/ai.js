@@ -104,7 +104,7 @@ Respond with this exact JSON structure:
 
 function fallbackEnrich(input, offer) {
   const executionSummary = `Moving service for a ${input.rooms}-room apartment from ${input.addressFrom} to ${input.addressTo} (${offer.distance.km} km). ` +
-    `Our team will handle packing, transport${!input.hasLift ? " (manual carrying, no elevator)" : ""}${input.includeAssembly ? ", furniture assembly," : ""} and final cleaning. ` +
+    `Our team will handle packing, transport${!input.hasLift ? " (manual carrying, no elevator)" : ""}${input.includeAssembly ? " and furniture assembly" : ""}. ` +
     `${input.expressService ? "Express service selected — priority scheduling guaranteed. " : ""}` +
     `Estimated total: ${offer.totalPrice} ${offer.currency}.`;
 
