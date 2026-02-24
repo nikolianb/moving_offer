@@ -131,17 +131,3 @@ Without the key, everything works — it uses local Swiss city coordinates for d
   "executionSummary": "Moving service for a 3.5-room apartment..."
 }
 ```
-
-## Key Decisions
-
-1. **Clean separation of concerns**: Routes handle HTTP, services handle business logic, config handles environment. Each layer is independently testable.
-
-2. **AI with graceful fallback**: OpenAI is used for distance estimation and task enrichment, but the system works fully without it. Local fallback uses Haversine formula with Swiss city coordinates.
-
-3. **Distance calculation**: Two-tier approach — OpenAI estimates real driving distance first, local Haversine + road factor (×1.3) as fallback. The response indicates which source was used.
-
-4. **CHF pricing for Swiss market**: Realistic rates based on Umzugsfirma Zürich's market (CH + EU). Transport = base fee + per-km rate.
-
-5. **Optional services**: Assembly is a user choice (not forced). Express service adds +20%. Heavy items have per-item surcharges.
-
-6. **Simple > complex**: Single-page UI, no routing or state libraries. Component-per-folder structure for easy scaling later.
