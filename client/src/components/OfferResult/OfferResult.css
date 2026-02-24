@@ -1,0 +1,144 @@
+.offer-result {
+  background: #fff;
+  border-radius: 14px;
+  padding: 2rem;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.08);
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.offer-result h2 {
+  font-size: 1.3rem;
+  font-weight: 700;
+}
+
+.offer-result h3 {
+  font-size: 1rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  color: #333;
+}
+
+/* Summary */
+.result-summary {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  padding: 1rem 1.25rem;
+  background: #f8f9fb;
+  border-radius: 10px;
+}
+
+.summary-row {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.9rem;
+}
+
+.summary-label {
+  font-weight: 500;
+  color: #666;
+}
+
+.badge {
+  background: #d90429;
+  color: #fff;
+  padding: 0.1rem 0.6rem;
+  border-radius: 20px;
+  font-size: 0.78rem;
+  font-weight: 600;
+}
+
+/* Tasks */
+.tasks-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.task-card {
+  border: 1px solid #eee;
+  border-radius: 10px;
+  padding: 1rem 1.25rem;
+  transition: border-color 0.2s;
+}
+
+.task-card:hover {
+  border-color: #f0a0a0;
+}
+
+.task-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.35rem;
+}
+
+.task-name {
+  font-weight: 600;
+  font-size: 0.95rem;
+}
+
+.task-price {
+  font-weight: 700;
+  color: #d90429;
+  font-size: 0.95rem;
+}
+
+.task-desc {
+  font-size: 0.85rem;
+  color: #555;
+  margin-bottom: 0.25rem;
+}
+
+.task-explain {
+  font-size: 0.78rem;
+  color: #999;
+  font-style: italic;
+}
+
+/* Total */
+.total-section {
+  border-top: 2px solid #eee;
+  padding-top: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.total-row {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.9rem;
+}
+
+.total-row.subtotal {
+  color: #666;
+}
+
+.total-row.express {
+  color: #e67e22;
+  font-weight: 500;
+}
+
+.total-row.grand-total {
+  font-size: 1.15rem;
+  font-weight: 700;
+  margin-top: 0.25rem;
+  padding-top: 0.5rem;
+  border-top: 1px solid #eee;
+}
+
+/* Execution Summary */
+.exec-summary {
+  background: #fdf0f0;
+  border-radius: 10px;
+  padding: 1rem 1.25rem;
+}
+
+.exec-summary p {
+  font-size: 0.9rem;
+  color: #444;
+  line-height: 1.65;
+}
